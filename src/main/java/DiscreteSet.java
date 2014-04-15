@@ -1,13 +1,13 @@
 /**
  * Created by ge3k on 2/4/14.
  */
-public class UnionFind {
+public class DiscreteSet {
 
     int[] parentArray;
     int[] rank;
     int count;
 
-    public UnionFind(int N) {
+    public DiscreteSet(int N) {
         if (N < 0) throw new IllegalArgumentException();
         this.count = N;
         parentArray = new int[N];

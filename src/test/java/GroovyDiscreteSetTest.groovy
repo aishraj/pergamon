@@ -1,11 +1,11 @@
 /**
  * Created by ge3k on 2/4/14.
  */
-class GroovyUnionFindTest extends GroovyTestCase {
+class GroovyDiscreteSetTest extends GroovyTestCase {
 
 
     void testConnected() {
-        UnionFind unionFind = new UnionFind(10)
+        DiscreteSet unionFind = new DiscreteSet(10)
         unionFind.union(4,3)
         unionFind.union(3,8)
         unionFind.union(6,5)
