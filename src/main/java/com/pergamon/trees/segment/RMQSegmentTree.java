@@ -83,4 +83,10 @@ public class RMQSegmentTree {
         }
         return dataArray[p2];
     }
+
+    public RMQSegmentTree(int dataArraySize, int lookUpArraySize) {
+        dataArray = new int[dataArraySize];
+        lookupArray = new int[lookUpArraySize];
+        initialize(0,0,dataArraySize-1);
+    }
 }
