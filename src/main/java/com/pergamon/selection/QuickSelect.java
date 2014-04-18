@@ -6,29 +6,58 @@ import java.util.Comparator;
  * Created by ge3k on 15/4/14 7:47 AM.
  */
 public class QuickSelect {
-    public static int select (int[] items, int lo, int hi, int k) {
-        while(true) {
-            int p = partition(items,lo,hi);
-            if ( k  > p) {
-                lo = p;
+
+    /**
+     *
+     * @param a
+     * @param k
+     * @param lo
+     * @param hi
+     * @return the 0 based nth smallest element
+     */
+    public static int select(Integer[] a ,int k, int lo, int hi) {
+        if (lo == hi) {
+            return a[lo];
+        }
+        while (true) {
+            int p = partition(a,lo,hi);
+            if (k < p) {
+                hi = p-1;
             }
-            else if (k < p) {
-                hi = p;
+            else if (k > p) {
+                lo = p+1;
             }
-            else if (k == p) {
-                break;
+            else {
+                return p;
             }
         }
-        return items[k];
     }
 
-    private static int partition(int[] items, int lo, int hi) {
-        int v = items[lo];
-        while(true) {
-            while(items[++lo] < hi) {
-                if (lo==hi) break;
+    private static int partition(Comparable[] a, int lo, int hi) {
+        int i = lo;
+        int j = hi +1;
+        while (true) {
+            while (a[++i].compareTo(a[lo]) < 0) {
+                if (i==hi) break;
             }
-            while (items[lo])
+            while (a[lo].compareTo(a[--j]) < 0) {
+                if (j == lo) break;
+            }
+            if ( i >= j) {
+                break;
+            }
+            arrSwap(a,i,j);
         }
+
+        arrSwap(a,lo,j);
+        return j;
+
     }
+
+    private static void arrSwap(Object[] a, int i, int j) {
+        Object temp = a[i];
+        a[i] = a[j];
+        a[j]= temp;
+    }
+
 }
